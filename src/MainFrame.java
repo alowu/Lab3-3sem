@@ -76,29 +76,18 @@ public class MainFrame extends JFrame {
 
         // Запомнить во внутреннем поле переданные коэффициенты
         this.coefficients = coefficients;
-        // Установить размеры окна
         setSize(WIDTH, HEIGHT);
         Toolkit kit = Toolkit.getDefaultToolkit();
-        // Отцентрировать окно приложения на экране
         setLocation((kit.getScreenSize().width - WIDTH) / 2, (kit.getScreenSize().height - HEIGHT) / 2);
 
-        //загрузка изображения и установка его в качестве иконки
-        //Image img = kit.getImage("icon.gif");
-        //setIconImage(img);
-
-        // Создать меню
         JMenuBar menuBar = new JMenuBar();
-        // Установить меню в качестве главного меню приложения
         setJMenuBar(menuBar);
-        // Добавить в меню пункт меню "Файл"
+
         JMenu fileMenu = new JMenu("Файл");
         // Добавить его в главное меню
         menuBar.add(fileMenu);
-        // Создать пункт меню "Таблица"
         JMenu tableMenu = new JMenu("Таблица");
-        // Добавить его в главное меню
         menuBar.add(tableMenu);
-
         JMenu infMenu = new JMenu("Справка");
         menuBar.add(infMenu);
 
@@ -200,7 +189,6 @@ public class MainFrame extends JFrame {
                 String value2 = JOptionPane.showInputDialog(MainFrame.this, "Введите значение конца отрезка",
                         "Поиск значения из диапазона", JOptionPane.QUESTION_MESSAGE);
                 // Установить введенное значение в качестве иголки
-                //renderer.setNeedle(value);
                 renderer.setNeedle1(value1, value2);
                 // Обновить таблицу
                 getContentPane().repaint();
@@ -217,7 +205,7 @@ public class MainFrame extends JFrame {
             // Задать действие на нажатие "О программе"
             public void actionPerformed(ActionEvent event) {
                 JOptionPane.showMessageDialog(MainFrame.this,
-                        "Автор: Белоусов Илья\n8 группа\n            2020");
+                        "Автор: Белоусов Илья\n8 группа\n2020");
             }
         };
 
@@ -360,9 +348,7 @@ public class MainFrame extends JFrame {
             }
             // Закрыть поток вывода
             out.close();
-        } catch (Exception e) {
-            // Исключительную ситуацию "ФайлНеНайден" в данном случае можно не обрабатывать,
-            // так как мы файл создаем, а не открываем для чтения
+        } catch (Exception ignored) {
         }
     }
 
@@ -390,9 +376,7 @@ public class MainFrame extends JFrame {
             }
             // Закрыть поток
             out.close();
-        } catch (FileNotFoundException e) {
-            // Исключительную ситуацию "ФайлНеНайден" можно не
-            // обрабатывать, так как мы файл создаем, а не открываем
+        } catch (FileNotFoundException ignored) {
         }
     }
 
@@ -415,7 +399,7 @@ public class MainFrame extends JFrame {
                 writer.newLine();
             }
             writer.close();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
